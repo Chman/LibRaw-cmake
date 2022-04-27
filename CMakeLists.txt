@@ -508,7 +508,7 @@ endif()
 set_target_properties(raw PROPERTIES VERSION     ${RAW_LIB_SO_VERSION_STRING})
 set_target_properties(raw PROPERTIES SOVERSION   ${RAW_LIB_SO_CUR_VERSION})
 set_target_properties(raw PROPERTIES OUTPUT_NAME "raw")
-set_target_properties(raw PROPERTIES COMPILE_PDB_NAME "raw")
+# set_target_properties(raw PROPERTIES COMPILE_PDB_NAME "raw")
 
 # -- Dedicated libraw target to support multi-threading ---------------------------------------------
 
@@ -575,7 +575,7 @@ endif()
 set_target_properties(raw_r PROPERTIES VERSION     ${RAW_LIB_SO_VERSION_STRING})
 set_target_properties(raw_r PROPERTIES SOVERSION   ${RAW_LIB_SO_CUR_VERSION})
 set_target_properties(raw_r PROPERTIES OUTPUT_NAME "raw_r")
-set_target_properties(raw_r PROPERTIES COMPILE_PDB_NAME "raw_r")
+# set_target_properties(raw_r PROPERTIES COMPILE_PDB_NAME "raw_r")
 
 # -- Files to install -------------------------------------------------------------------------------------
 if (LIBRAW_INSTALL)
@@ -614,14 +614,14 @@ if (LIBRAW_INSTALL)
            )
 
 
-    if(NOT BUILD_SHARED_LIBS AND "${CMAKE_CXX_SIMULATE_ID}" STREQUAL "MSVC")
-        message("ClangCl does not support pdb generation with static libraries")
-    elseif(MSVC)
-        install(FILES ${PROJECT_BINARY_DIR}/raw.pdb ${PROJECT_BINARY_DIR}/raw_r.pdb
-                DESTINATION ${CMAKE_INSTALL_LIBDIR}
-                CONFIGURATIONS Debug RelWithDebInfo
-               )
-    endif()
+#    if(NOT BUILD_SHARED_LIBS AND "${CMAKE_CXX_SIMULATE_ID}" STREQUAL "MSVC")
+#        message("ClangCl does not support pdb generation with static libraries")
+#    elseif(MSVC)
+#        install(FILES ${PROJECT_BINARY_DIR}/raw.pdb ${PROJECT_BINARY_DIR}/raw_r.pdb
+#                DESTINATION ${CMAKE_INSTALL_LIBDIR}
+#                CONFIGURATIONS Debug RelWithDebInfo
+#               )
+#    endif()
 
     # Install find cmake script to the system for client applications.
     install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/FindLibRaw.cmake
